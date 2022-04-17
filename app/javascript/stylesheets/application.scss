@@ -1,0 +1,76 @@
+@import '~bootstrap/scss/bootstrap';
+
+ body {
+    margin: 0;
+}
+
+.not-login {
+    display: flex;
+    list-style: none;
+}
+
+header {
+    line-height: 50px;
+    border-bottom: 1px solid black;
+ }
+ 
+ .not-login-logo {
+     border: 1px solid black;
+     padding: 5px 20px;
+     margin-right: 900px;
+ }
+
+ .not-login-item-index {
+     margin-right: 30px;
+     border: 1px solid gray;
+     border-radius: 5px;
+     padding: 5px;
+     line-height: 30px;
+ }
+
+ .not-login-login {
+     margin-right: 30px;
+     border: 1px solid gray;
+     border-radius: 5px;
+     padding: 5px;
+     line-height: 30px;
+ }
+
+ .not-login-signup {
+     margin-right: 30px;
+     border: 1px solid gray;
+     border-radius: 5px;
+     padding: 5px;
+     line-height: 30px;
+ }
+
+                                   /* registraiton/new.html.erb */
+
+
+.new_end_user_top {
+   margin-left: 30px;
+}   
+
+.new_end_user_wrapper {
+   margin-left: 30px;
+}     
+
+.login-link {
+   margin-top: 10px;
+   margin-bottom: 0;
+}
+
+                                       /* session.new.html.erb */
+
+.end_user_login {
+   margin-left: 30px;
+}                     
+
+.end-user-login-top {
+   margin-left: 30px;
+}
+
+.signup-link {
+   margin-top: 10px;
+   margin-bottom: 0;
+}
