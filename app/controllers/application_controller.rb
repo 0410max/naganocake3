@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
       end_user_customers_show_path
     end
   end
+  
 
   def after_log_in_path_for(resource)
     case resource
@@ -20,7 +21,7 @@ class ApplicationController < ActionController::Base
       end_user_customers_show_path
     end
   end
-  
+
 
   def after_sign_out_path_for(resource_or_scope)
     if resource_or_scope == :end_user
