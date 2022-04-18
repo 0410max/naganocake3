@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     registrations: "end_user/registrations",
     sessions: 'end_user/sessions'
   }
-  devise_for :admins, skip: [:registrations, :passwords] , controllers: {
+  devise_for :admin, skip: [:registrations, :passwords] , controllers: {
     sessions: "admin/sessions"
   }
   scope module: :end_user do
