@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_homes_top_path
     when EndUser
-      end_user_customers_show_path
+      end_user_customer_path(current_end_user)
     end
   end
   
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_homes_top_path
     when EndUser
-      end_user_customers_show_path
+      end_user_customer_show_path
     end
   end
 

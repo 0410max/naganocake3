@@ -1,2 +1,42 @@
-<h1>EndUser::Customers#edit</h1>
-<p>Find me in app/views/end_user/customers/edit.html.erb</p>
+
+<%= form_with model: @customer,url: end_user_customer_path, method: :patch,local: true do |f| %>
+    <div class='edit-end-user-wrapper'>
+      <div class="field">
+        <span>名前</span>
+        <span></span><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %> 
+        <span></span><%= f.text_field :last_name, autocomplete: "last_name" %>
+      </div>
+  
+      <div class="field">
+        <span>フリガナ</span>
+        <span></span><%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
+        <span></span><%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %><br />
+      </div>
+
+      <div class="field">
+        <span>住所</span>
+        <%= f.text_field :address, autocomplete: "address" %>
+      </div>
+  
+      <div class="field">
+        <span>電話番号(ハイフンなし)</span>
+        <%= f.text_field :phone_number, autocomplete: "phone_number" %>
+      </div>  
+
+      <div class="field">
+        <span>郵便番号(ハイフンなし)</span>
+        <%= f.text_field :postcode, autocomplete: "postcode" %>
+      </div>
+  
+      <div class="field">
+        <span>メールアドレス</span>
+        <%= f.email_field :email, autocomplete: "first_name" %>
+      </div>              
+      <br />
+  
+        <%= f.submit "編集内容を保存",class:'btn btn-success' %>
+        <%= link_to end_user_customer_confirm_path do %>
+          <span class='btn btn-danger'>退会する</span>
+        <% end %>
+    </div>
+<% end %>

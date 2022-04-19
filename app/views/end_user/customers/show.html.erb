@@ -1,7 +1,7 @@
 <div class='mypage-wrapper'>
     <p>マイページ</p>
     <span>登録情報</span>
-    <%= link_to '編集する',end_user_customers_edit_path,class:'btn btn-success' %>
+    <%= link_to '編集する',edit_end_user_customer_path,class:'btn btn-success' %>
 
     <table border>
         <tr>
@@ -29,5 +29,10 @@
             <td><%= current_end_user.email %></td>
         </tr>
     </table>
+    <br />
+    <br />
+    <span>配送先</span><span class='btn btn-primary'>一覧を見る</span><br /><br />
+    <span>注文履歴</span><span class='btn btn-primary'>一覧を見る</span>
+
 </div>
 
