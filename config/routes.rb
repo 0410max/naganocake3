@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top'
     resources :customers,only:[:index,:show,:edit,:update]
+    resources :genres,only:[:index,:edit,:create,:update]
+    resources :items,only:[:index,:new,:edit,:create,:update,:show]
   end
   namespace :end_user do
     resources :customers,only:[:show,:edit,:update]
