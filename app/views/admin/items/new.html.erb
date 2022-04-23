@@ -4,7 +4,7 @@
 
             <h4>商品新規登録</h4>
 
-            <%= form_with model:@item,url: admin_items_path,local: true do |f| %>
+            <%= form_with model:@item,url: admin_items_path do |f| %>
                 
                 <div>
                     <%= f.file_field :image,accept: "image/*" %>
@@ -26,9 +26,7 @@
 
                 <div>
                     ジャンル
-                    <% @genres.each do |genre| %>
-                        <%= f.select :genre_id, [genre,genre], {include_blank: "選択して下さい"} %>
-                    <% end %>
+                    <%= f.collection_select(:genre_id, @genres, :id,:name) %>
                 </div>
 
                 <br />
