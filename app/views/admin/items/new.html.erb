@@ -7,7 +7,7 @@
             <%= form_with model:@item,url: admin_items_path do |f| %>
                 
                 <div>
-                    <%= f.file_field :image,accept: "image/*" %>
+                    商品画像<%= f.file_field :image,accept: "image/*" %>
                 </div> 
 
                 <br />
@@ -32,7 +32,7 @@
                 <br />
 
                 <div>
-                    税抜価格<%= f.text_field :notax_price,placeholder:'1000' %>円
+                    税抜価格<%= f.text_field :notax_money,placeholder:'1000' %>円
                 </div>
 
                 <br />

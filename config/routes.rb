@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :customers,only:[:show,:edit,:update]
     get 'customer/confirm' => 'customers#confirm'
     patch 'customer/unsubscribe' => 'customers#unsubscribe'
+    resources :items,only:[:index]
   end
   devise_for :end_users,skip: [:passwords], controllers: {
     registrations: "end_user/registrations",
@@ -19,5 +20,7 @@ Rails.application.routes.draw do
   }
   scope module: :end_user do
     root 'homes#top'
+    get 'items' => 'items#index'
+
   end
 end

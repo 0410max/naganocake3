@@ -15,6 +15,7 @@ import "../stylesheets/application"
 import "../stylesheets/end_user/customers"
 import "../stylesheets/admin/customers"
 import "../stylesheets/admin/items"
+import "../stylesheets/end_user/items"
 
 Rails.start()
 Turbolinks.start()

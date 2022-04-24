@@ -1,0 +1,23 @@
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-10'>
+            <br /><br />
+            <span class='items-index'>商品一覧</span>(全<%= @items.count %>件)
+            
+            <div class='item-wrapper'>
+                <% @items.each do |item| %>
+                    <% if item.is_sale == true %>
+                        <div class='item-content'>
+                            <% if item.image.attached? %>
+                                <%= image_tag item.image,class:'image-size' %>
+                            <% end %><br />
+                            <%= item.name %><br />
+                            ¥<%= item.notax_money %>
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
+            
+        </div>
+    </div>
+</div>
