@@ -6,11 +6,15 @@
                 <%= image_tag @item.image,class:'image-size-show' %>
             <% end %>
         </div>
+
+        <% notax_money_num = @item.notax_money.to_i %>
+        <% tax_money = notax_money_num * 1.1 %>
+        <% tax_money_int = tax_money.to_i %>
         
         <div class='col-md-6 offset-1'>
             <span class='item-name'><%= @item.name %></span><br />
             <span class='item-introduction'><%= @item.introduction %></span><br /><br /><br /><br />
-            ¥<%= @item.notax_money %><br />
+            ¥<%= tax_money_int %><br />
         </div>
     </div>
 </div>
