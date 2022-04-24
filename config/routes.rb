@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :customers,only:[:show,:edit,:update]
     get 'customer/confirm' => 'customers#confirm'
     patch 'customer/unsubscribe' => 'customers#unsubscribe'
-    resources :items,only:[:index]
+    resources :items,only:[:index,:show]
   end
   devise_for :end_users,skip: [:passwords], controllers: {
     registrations: "end_user/registrations",
