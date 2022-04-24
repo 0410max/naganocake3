@@ -1,3 +1,3 @@
 class Address < ApplicationRecord
-    belongs_to :end_user,dependent: :destroy
+    belongs_to :end_user
 end

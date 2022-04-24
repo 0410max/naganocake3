@@ -1,7 +1,17 @@
+<br /><br />
+
 <div class='container'>
     <div class='row'>
+        <div class='col-md-2'>
+            <div class='search-genre-wrapper'>
+                <div class='search-genre'>ジャンル検索</div>
+                <% @genres.each do |genre| %>
+                    <%= genre.name %>
+                    <br />
+                <% end %>
+            </div>
+        </div>
         <div class='col-md-10'>
-            <br /><br />
             <% a = 0 %>
             <% @items.each do |item| %>
                 <% if item.is_sale == true %>
@@ -13,6 +23,11 @@
             
             <div class='item-wrapper'>
                 <% @items.each do |item| %>
+
+                    <% notax_money_num = item.notax_money.to_i %>
+                    <% tax_money = notax_money_num * 1.1 %>
+                    <% tax_money_int = tax_money.to_i %>
+
                     <% if item.is_sale == true %>
                             <div class='item-content'>
                                 <%= link_to end_user_item_path(item),class:'image-items-show-link' do %>
@@ -21,7 +36,7 @@
                                     <% end %>
                                 <% end %><br />
                                 <%= link_to item.name,end_user_item_path(item),class:'items-show-link' %><br />
-                                ¥<%= link_to item.notax_money,end_user_item_path(item),class:'items-show-link' %>
+                                ¥<%= link_to tax_money_int,end_user_item_path(item),class:'items-show-link' %>
                             </div>
                     <% end %>
                 <% end %>

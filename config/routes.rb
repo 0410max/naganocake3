@@ -3,13 +3,15 @@ Rails.application.routes.draw do
     get 'homes/top'
     resources :customers,only:[:index,:show,:edit,:update]
     resources :genres,only:[:index,:edit,:create,:update]
-    resources :items,only:[:index,:new,:edit,:create,:update,:show]
+    resources :items,only:[:index,:new,:edit,:create,:update,:show] do 
+      get :search, on: :collection
+    end
   end
   namespace :end_user do
     resources :customers,only:[:show,:edit,:update]
     get 'customer/confirm' => 'customers#confirm'
     patch 'customer/unsubscribe' => 'customers#unsubscribe'
-    resources :items,only:[:index,:show]
+    resources :items,only:[:index,:show]  
     resources :cart_items,only:[:index,:update,:destroy,:create]
     get 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :addresses,only:[:index,:edit,:create,:update,:destroy]

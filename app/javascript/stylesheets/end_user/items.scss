@@ -1,9 +1,10 @@
 .items-index {
     font-weight: bold;
+    font-size: 25px;
 }
 
 .image-size {
-    width: 200px;
+    width: 98%;
     height: 150px;
 }
 
@@ -13,8 +14,8 @@
 }
 
 .item-content {
-    width: 25%;
-    padding: 20px;
+    width: 22%;
+    margin: 10px;
 }
 
 .image-items-show-link:hover {
@@ -43,4 +44,12 @@
 
 .item-introduction {
     font-size: 20px;
+}
+
+.search-genre {
+    border-bottom: 1px solid black;
+}
+
+.search-genre-wrapper {
+    border: 1px solid black;
 }

@@ -11,7 +11,7 @@
 
 header {
     padding-top: 8px;
-    height: 60px;
+    height: 150px;
     border-bottom: 1px solid black;
  }
  
@@ -82,3 +82,22 @@ header {
    margin-bottom: 0;
 }
 
+.search {
+   border: none;
+   outline: none;
+}
+
+.search-wrapper {
+   border: 1px solid black;
+   padding: 5px;
+}
+
+.search-top {
+   float: right;
+   padding-right: 30px;
+}
+
+.search-submit {
+   background-color: white;
+   border: none;
+}

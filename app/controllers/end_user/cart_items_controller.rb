@@ -1,5 +1,6 @@
 class EndUser::CartItemsController < ApplicationController
     def index 
+        @cart_items = current_end_user.cart_items
     end
 
     def destroy
