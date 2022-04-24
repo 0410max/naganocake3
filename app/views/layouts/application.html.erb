@@ -23,7 +23,7 @@
             <%= link_to '商品一覧',end_user_items_path %>
           </li>
           <li class='not-login-item-index'>
-            <a href="#">カート</a>
+            <%= link_to 'カート',end_user_cart_items_path %>
           </li>
           <li class='not-login-item-index'>
             <%= link_to 'ログアウト',destroy_end_user_session_path, method: :delete %>
