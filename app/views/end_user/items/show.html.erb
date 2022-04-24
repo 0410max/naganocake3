@@ -1,0 +1,22 @@
+<br /><br />
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-3 offset-2'>
+            <% if @item.image.attached? %>
+                <%= image_tag @item.image,class:'image-size-show' %>
+            <% end %>
+        </div>
+        <div class='col-md-6 offset-1'>
+
+            <span class='item-name'><%= @item.name %></span><br />
+            <span class='item-introduction'><%= @item.introduction %></span><br /><br /><br /><br />
+            ¥<%= @item.notax_money %><br /><br />
+
+            <%= form_with model:@cart_item,url:end_user_cart_items_path,method: :post do |f| %>
+                <%= f.select :amount, *[1..10],{include_blank:'個数選択'} %>
+                <%= f.hidden_field :item_id ,value:@item.id %>
+                <%= f.submit 'カートに入れる' %>
+            <% end %>
+        </div>
+    </div>
+</div>
