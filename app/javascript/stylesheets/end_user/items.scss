@@ -1,0 +1,46 @@
+.items-index {
+    font-weight: bold;
+}
+
+.image-size {
+    width: 200px;
+    height: 150px;
+}
+
+.item-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item-content {
+    width: 25%;
+    padding: 20px;
+}
+
+.image-items-show-link:hover {
+    cursor :pointer;
+}
+
+.items-show-link {
+    color: black;
+}
+
+.items-show-link:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.image-size-show {
+    width: 350px;
+    height: 230px
+}
+
+.item-name {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.item-introduction {
+    font-size: 20px;
+}

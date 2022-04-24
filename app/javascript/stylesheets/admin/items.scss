@@ -1,0 +1,23 @@
+.item-new-wrapper {
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.plus-item {
+    float: right;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    padding: 10px 18px;
+    border: 1px solid #dbdbdb;
+    border-radius: 30px;
+}
+
+.sale-true {
+    font-weight: bold;
+    color: green;
+}
+
+.sale-false {
+    font-weight: bold;
+    color: gray;
+}

@@ -2,6 +2,7 @@
 
 class EndUser::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :customer_state, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -18,7 +19,14 @@ class EndUser::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+  protected
+  def customer_state
+    @customer = EndUser.find_by(email: params[:end_user][:email])
+    return if !@customer
+    unless @customer.valid_password?(params[:end_user][:password]) && !@customer.is_deleted
+      redirect_to new_end_user_registration_path
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

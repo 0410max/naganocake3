@@ -1,0 +1,38 @@
+<div class='mypage-wrapper'>
+    <p>マイページ</p>
+    <span>登録情報</span>
+    <%= link_to '編集する',edit_end_user_customer_path,class:'btn btn-success' %>
+
+    <table border>
+        <tr>
+            <td>氏名</td>
+            <td><%= current_end_user.first_name %>&nbsp;<%= current_end_user.last_name %></td>
+        </tr>
+        <tr>
+            <td>カナ</td>
+            <td><%= current_end_user.first_name_kana %>&nbsp;<%= current_end_user.last_name_kana %></td>
+        </tr>
+        <tr>
+            <td>郵便番号</td>
+            <td><%= current_end_user.postcode %></td>
+        </tr>
+        <tr>
+            <td>住所</td>
+            <td><%= current_end_user.address %></td>
+        </tr>
+        <tr>
+            <td>電話番号</td>
+            <td><%= current_end_user.phone_number %></td>
+        </tr>
+        <tr>
+            <td>メールアドレス</td>
+            <td><%= current_end_user.email %></td>
+        </tr>
+    </table>
+    <br />
+    <br />
+    <span>配送先</span><span class='btn btn-primary'>一覧を見る</span><br /><br />
+    <span>注文履歴</span><span class='btn btn-primary'>一覧を見る</span>
+
+</div>
+
