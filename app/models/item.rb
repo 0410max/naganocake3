@@ -6,4 +6,7 @@ class Item < ApplicationRecord
     validates :name,presence:true
     validates :introduction,presence:true
     validates :notax_money,presence:true
+    def with_tax_price
+        (notax_money * 1.1).floor
+    end
 end

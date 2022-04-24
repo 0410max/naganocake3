@@ -8,4 +8,10 @@ class EndUser::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
   end
+
+  def search
+    @genres = Genre.all
+    @items = Item.where(genre_id:params[:genre_id])
+  end
+  
 end

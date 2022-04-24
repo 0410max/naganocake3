@@ -4,6 +4,7 @@
     <div class='row'>
         <div class='col-md-10'>
             <span>ショッピングカート</span>
+            <%= link_to 'カートを空にする',end_user_cart_items_destroy_all_path,class:'cart_items_destroy_all btn btn-danger',data: {confirm:"本当にカートを空にしますか？"} %><br /><br />
             <table class='table table-bordered'>
                 <tr>
                     <th>商品名</th>
@@ -12,16 +13,30 @@
                     <th>小計</th>
                     <th></th>
                 </tr>
+
+                <% total_money = 0 %>
+
                 <% @cart_items.each do |cart_item| %>
                     <tr>
                         <td><%= cart_item.item.name %></td>
-                        <td></td>
+                        <td><%= cart_item.item.with_tax_price %></td>
                         <td><%= cart_item.amount %></td>
-                        <td></td>
-                        <td></td>
+                        <td><%= cart_item.subtotal %></td>   
+                        <td><%= link_to '削除する',end_user_cart_item_path(cart_item),method: :delete %></td>
                     </tr>
+                    <% total_money += cart_item.subtotal %>
                 <% end %>
             </table>
+            <span><%= link_to '買い物続ける',root_path,class:'btn btn-primary' %></span>
+            <span>
+                <table class='total-money-table' border>
+                    <td class='td-total-money'>合計金額</td>
+                    <td class='td-total-money'><%= total_money %></td>
+                </table>
+            </span>
+            
+            <br /><br />
+            <div class='btn btn-success'>情報入力に進む</div>
         </div>
     </div>
 </div>

@@ -1,2 +1,24 @@
-<h1>EndUser::Addresses#edit</h1>
-<p>Find me in app/views/end_user/addresses/edit.html.erb</p>
+<br /><br />
+
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-6'>
+            <h4>配送先編集</h4>
+            <%= form_with model:@address,url:end_user_address_path,method: :patch do |f| %>
+                郵便番号(ハイフンなし)<%= f.text_field :postcode,placeholder:'0000000' %><br />
+                住所<%= f.text_field :address,placeholder:'東京都渋谷区代々木観音町神園町0-0' %><br />
+                宛名<%= f.text_field :name,placeholder:'令和道子' %>
+                <%= f.submit '変更内容を保存',class:'btn btn-success' %>
+            <% end %>
+
+            <% if @address.errors.any? %>
+                <div class="error">
+                    <% @address.errors.full_messages.each do |message| %>
+                        <%= message %><br />
+                    <% end %>
+                </div>
+            <% end %>
+
+        </div>
+    </div>
+</div>

@@ -11,11 +11,14 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
+import '@fortawesome/fontawesome-free/js/all'
 import "../stylesheets/application" 
 import "../stylesheets/end_user/customers"
 import "../stylesheets/admin/customers"
 import "../stylesheets/admin/items"
 import "../stylesheets/end_user/items"
+import "../stylesheets/end_user/cart_items"
+
 
 Rails.start()
 Turbolinks.start()

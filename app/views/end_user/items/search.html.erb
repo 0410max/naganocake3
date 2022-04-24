@@ -25,7 +25,6 @@
             
             <div class='item-wrapper'>
                 <% @items.each do |item| %>
-
                     <% notax_money_num = item.notax_money.to_i %>
                     <% tax_money = notax_money_num * 1.1 %>
                     <% tax_money_int = tax_money.to_i %>

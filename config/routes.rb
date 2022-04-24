@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     resources :customers,only:[:show,:edit,:update]
     get 'customer/confirm' => 'customers#confirm'
     patch 'customer/unsubscribe' => 'customers#unsubscribe'
-    resources :items,only:[:index,:show]  
+    resources :items,only:[:index,:show] do 
+      get :search, on: :collection
+    end
     resources :cart_items,only:[:index,:update,:destroy,:create]
     get 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :addresses,only:[:index,:edit,:create,:update,:destroy]
