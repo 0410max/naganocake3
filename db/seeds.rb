@@ -10,3 +10,17 @@ Admin.create!(
    email: 'aaa@aaa',
    password: 'qwerty'
 )
+
+Genre.create!(
+   {name:'焼き菓子'},
+   {name:'キャンディ'}
+)
+
+Item.create!{
+   {
+   name:'いちごケーキ',
+   notax_money:'1000',
+   introduction:'美味しいです',
+   is_sale:true
+   }
+}

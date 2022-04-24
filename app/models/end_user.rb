@@ -5,6 +5,7 @@ class EndUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cart_items
+  has_many :addresses
 
   validates :first_name,presence:true
   validates :last_name,presence:true

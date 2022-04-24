@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :items,only:[:index,:show]
     resources :cart_items,only:[:index,:update,:destroy,:create]
     get 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :addresses,only:[:index,:edit,:create,:update,:destroy]
   end
   devise_for :end_users,skip: [:passwords], controllers: {
     registrations: "end_user/registrations",
