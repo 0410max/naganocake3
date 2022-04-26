@@ -1,0 +1,18 @@
+<br /><br />
+
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-10'>
+            <h4>注文情報入力</h4>
+            <br /><br />
+            <%= form_with model:@order,url:end_user_orders_path,method: :post do |f| %>
+                <h3>支払方法</h3>
+                <%= f.radio_button :pay_way,'credit_card' %>クレジットカード
+                <%= f.radio_button :pay_way,'transfer' %>銀行振込
+
+                <h3>お届け先</h3>
+                <%= f.radio_button :address,
+            <% end %>
+        </div>
+    </div>
+</div> 

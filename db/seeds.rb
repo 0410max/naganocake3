@@ -12,15 +12,20 @@ Admin.create!(
 )
 
 Genre.create!(
-   {name:'焼き菓子'},
-   {name:'キャンディ'}
+   [
+      {name:'アイス'},
+      {name:'果物'},
+      {name:'野菜'}
+   ]
 )
 
-Item.create!{
-   {
-   name:'いちごケーキ',
-   notax_money:'1000',
-   introduction:'美味しいです',
-   is_sale:true
-   }
-}
+item = Item.create!(
+      {
+      name:'いちごケーキ',
+      genre_id:'1',
+      notax_money:'1000',
+      introduction:'美味しいです',
+      is_sale:true
+      }
+)
+item.image.attach(io: File.open(Rails.root.join('app/assets/images/相模原3.jpeg')),filename: '相模原3.jpg')

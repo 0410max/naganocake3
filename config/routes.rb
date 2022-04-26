@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     resources :cart_items,only:[:index,:update,:destroy,:create]
     get 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :addresses,only:[:index,:edit,:create,:update,:destroy]
+    resources :orders,only:[:new,:index,:show,:create]
+    post 'orders/confirm' => 'orders#confirm'
+    get 'orders/complete' => 'orders#complete'
   end
   devise_for :end_users,skip: [:passwords], controllers: {
     registrations: "end_user/registrations",
@@ -28,6 +31,5 @@ Rails.application.routes.draw do
   scope module: :end_user do
     root 'homes#top'
     get 'items' => 'items#index'
-
   end
 end
