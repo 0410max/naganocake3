@@ -8,4 +8,5 @@ class Item < ApplicationRecord
     def with_tax_price
         (notax_money * 1.1).floor
     end
+    
 end
