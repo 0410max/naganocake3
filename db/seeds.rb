@@ -7,15 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-   email: 'aaa@aaa',
+   email: 'a@a',
    password: 'qwerty'
 )
 
 Genre.create!(
    [
-      {name:'アイス'},
-      {name:'果物'},
-      {name:'野菜'}
+      {name:'ケーキ'},
+      {name:'プリン'},
+      {name:'焼き菓子'}
    ]
 )
 
