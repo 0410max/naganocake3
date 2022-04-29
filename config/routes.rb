@@ -9,16 +9,16 @@ Rails.application.routes.draw do
   end
   namespace :end_user do
     resources :customers,only:[:show,:edit,:update]
-    get 'customer/confirm' => 'customers#confirm'
+    post 'customer/confirm' => 'customers#confirm'
     patch 'customer/unsubscribe' => 'customers#unsubscribe'
     resources :items,only:[:index,:show] do 
       get :search, on: :collection
     end
     resources :cart_items,only:[:index,:update,:destroy,:create]
     get 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    get 'orders/confirm' => 'orders#confirm'
     resources :addresses,only:[:index,:edit,:create,:update,:destroy]
     resources :orders,only:[:new,:index,:show,:create]
-    post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
   end
   devise_for :end_users,skip: [:passwords], controllers: {

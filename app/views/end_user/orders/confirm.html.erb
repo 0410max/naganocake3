@@ -1,0 +1,32 @@
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-6 offset-1'>
+            <h3>注文情報確認</h3>
+            <table class='table table-bordered'>
+                <tr>
+                    <th>商品名</th>
+                    <th>単価(税込)</th>
+                    <th>数量</th>
+                    <th>小計</th>
+                </tr>
+                <% @orders.each do |order| %>
+                    <tr>
+                        <td><%= image_tag order.item.image,class:'order-image-size' %><%= order.item.name %></td>
+                        <td><%= order.item.with_tax_price %></td>
+                        <td><%= order.amount %></td>
+                        <td><%= order.subtotal %></td>
+                    </tr>
+                <% end %>
+            </table>
+        </div>
+        <div class='col-md-4'>
+            <table>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

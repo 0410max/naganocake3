@@ -18,6 +18,7 @@ import "../stylesheets/admin/customers"
 import "../stylesheets/admin/items"
 import "../stylesheets/end_user/items"
 import "../stylesheets/end_user/cart_items"
+import "../stylesheets/end_user/order"
 
 
 Rails.start()

@@ -9,40 +9,29 @@
                     商品画像<%= f.file_field :image,accept: "image/*" %>
                 </div> 
                 <br />
-
                 <div>
                     商品名<%= f.text_field :name,placeholder:'商品名' %>
                 </div>
-
                 <br />
-
                 <div>
                     商品説明<%= f.text_area :introduction,placeholder:'ここに説明文を追加します' %>
                 </div>
-
                 <br />
-
                 <div>
                     ジャンル
-                    <%= f.collection_select(:genre_id, @genres, :id,:name) %>
+                    <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name) %>
                 </div>
-
                 <br />
-
                 <div>
                     税抜価格<%= f.text_field :notax_money,placeholder:'1000' %>円
                 </div>
-
                 <br />
-
                 <div>
                     販売ステータス
                     <%= f.radio_button :is_sale, true %>販売中
                     <%= f.radio_button :is_sale, false %>販売停止中
                 </div>
-
                 <br />
-
                 <% if @item.errors.any? %>
                     <div class="error">
                         <% @item.errors.full_messages.each do |message| %>
@@ -50,12 +39,9 @@
                         <% end %>
                     </div>
                 <% end %>
-
                 <br />
-
                 <%= f.submit '新規登録',class:'btn btn-success' %>
             <% end %>
-
         </div>
     </div>
 </div>

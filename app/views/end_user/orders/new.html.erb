@@ -4,15 +4,27 @@
     <div class='row'>
         <div class='col-md-10'>
             <h4>注文情報入力</h4>
-            <br /><br />
-            <%= form_with model:@order,url:end_user_orders_path,method: :post do |f| %>
+            <br />
+            <%= form_with model:@order,url:end_user_orders_confirm_path,method: :post,method: :get do |f| %>
                 <h3>支払方法</h3>
                 <%= f.radio_button :pay_way, Order.pay_ways.key(0) %>
                 <%= f.label :pay_way, Order.pay_ways_i18n[:credit_card] %>
                 <%= f.radio_button :pay_way, Order.pay_ways.key(1) %>
                 <%= f.label :pay_way, Order.pay_ways_i18n[:transfer]%>
+                <br /><br />
 
                 <h3>お届け先</h3>
+                <%= f.radio_button :select_address,0 %>ご自身の住所<br />
+                <span class='order-new'>〒<%= current_end_user.postcode %><%= current_end_user.address %><%= current_end_user.first_name %><%= current_end_user.last_name %></span><br />
+
+                <%= f.radio_button :select_address,1 %>登録済み住所から選択<br />
+                <span class='order-new'><%= f.select :address_id, options_from_collection_for_select(current_end_user.addresses, :id, :address_display) %></span><br />
+
+                <%= f.radio_button :select_address,2 %>新しいお届け先<br />
+                <span class='order-new'>郵便番号(ハイフンなし)<%= f.text_field :ship_code,placeholder:'0000000' %></span><br />
+                <span class='order-new'>住所<%= f.text_field :ship_address,placeholder:'東京都渋谷区代々木神園町0-0' %></span><br />
+                <span class='order-new'>宛名<%= f.text_field :ship_name,placeholder:'令和道子' %></span><br />
+                <%= f.submit'確認画面へ進む',class:'btn btn-success' %>
             <% end %>
         </div>
     </div>
