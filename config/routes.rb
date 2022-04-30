@@ -7,20 +7,7 @@ Rails.application.routes.draw do
       get :search, on: :collection
     end
   end
-  namespace :end_user do
-    resources :customers,only:[:show,:edit,:update]
-    post 'customer/confirm' => 'customers#confirm'
-    patch 'customer/unsubscribe' => 'customers#unsubscribe'
-    resources :items,only:[:index,:show] do 
-      get :search, on: :collection
-    end
-    resources :cart_items,only:[:index,:update,:destroy,:create]
-    get 'cart_items/destroy_all' => 'cart_items#destroy_all'
-    get 'orders/confirm' => 'orders#confirm'
-    resources :addresses,only:[:index,:edit,:create,:update,:destroy]
-    resources :orders,only:[:new,:index,:show,:create]
-    get 'orders/complete' => 'orders#complete'
-  end
+
   devise_for :end_users,skip: [:passwords], controllers: {
     registrations: "end_user/registrations",
     sessions: 'end_user/sessions'
@@ -31,5 +18,18 @@ Rails.application.routes.draw do
   scope module: :end_user do
     root 'homes#top'
     get 'items' => 'items#index'
+    resources :customers,only:[:show,:edit,:update]
+    post 'customer/confirm' => 'customers#confirm'
+    patch 'customer/unsubscribe' => 'customers#unsubscribe'
+    resources :items,only:[:index,:show] do 
+      get :search, on: :collection
+    end
+    resources :cart_items,only:[:index,:update,:destroy,:create]
+    get 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :addresses,only:[:index,:edit,:create,:update,:destroy]
+    post 'orders/confirm' => 'orders#confirm'
+    resources :orders,only:[:new,:index,:show,:create]
+    get 'orders/complete' => 'orders#complete'
   end
 end
+
