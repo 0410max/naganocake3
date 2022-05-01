@@ -10,22 +10,22 @@ class EndUser::OrdersController < ApplicationController
   end
 
   def confirm
+    @orders = current_end_user.cart_items
     @order = Order.new(order_params)
-    if params[:order][:select_address] == 0
+    if params[:order][:select_address] == "0"
       @order.ship_code = current_end_user.postcode
       @order.ship_address = current_end_user.address
       @order.ship_name = current_end_user.first_name + current_end_user.last_name
-    elsif params[:order][:select_address] == 1
+    elsif params[:order][:select_address] == "1"
       @address = Address.find(params[:order][:address_id])
       @order.ship_code = @address.postcode
       @order.ship_address = @address.address
       @order.ship_name = @address.first_name + @address.last_name
     else
-      @order.ship_code = params[:ship_code]
-      @order.ship_address = params[:ship_address]
-      @order.ship_name = params[:ship_name]
+      @order.ship_code = params[:order][:ship_code]
+      @order.ship_address = params[:order][:ship_address]
+      @order.ship_name = params[:order][:ship_name] 
     end
-    redirect_to orders_confirm_path
   end
 
   def complete

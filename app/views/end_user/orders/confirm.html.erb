@@ -1,3 +1,5 @@
+<br />
+
 <div class='container'>
     <div class='row'>
         <div class='col-md-6 offset-1'>
@@ -9,22 +11,42 @@
                     <th>数量</th>
                     <th>小計</th>
                 </tr>
+                <% @total_money = 0 %>
                 <% @orders.each do |order| %>
                     <tr>
-                        <td><%= image_tag order.item.image,class:'order-image-size' %><%= order.item.name %></td>
-                        <td><%= order.item.with_tax_price %></td>
+                        <td><%= image_tag order.item.image,class:'order-item-image' %><%= order.item.name %></td>
+                        <td><%= order.item.with_tax_price.to_s(:delimited) %></td>
                         <td><%= order.amount %></td>
-                        <td><%= order.subtotal %></td>
+                        <td><%= order.subtotal.to_s(:delimited) %></td>
                     </tr>
+                    <% @total_money += order.subtotal %>
                 <% end %>
             </table>
-        </div>
+            <span class='pay_way'>支払方法</span>
+            <% if @order.pay_way == 'credit_card' %>
+                クレジットカード
+            <% else %>
+                銀行振込
+            <% end %>
+            <br />
+
+            <span class='pay_way'>お届け先</span>
+            〒<%= @order.ship_code %><%= @order.ship_address %><%= @order.ship_address %><br /><%= @order.ship_name %>
+            </div>
         <div class='col-md-4'>
-            <table>
+            <br /><br />
+            <table class='table table-bordered'>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>送料</td>
+                    <td>800</td>
+                </tr>
+                <tr>
+                    <td>商品合計</td>
+                    <td><%= @total_money.to_s(:delimited) %></td>
+                </tr>
+                <tr>
+                    <td>請求金額</td>
+                    <td><%= (@total_money + 800).to_s(:delimited) %></td>
                 </tr>
             </table>
         </div>
