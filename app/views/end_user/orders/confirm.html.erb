@@ -23,16 +23,24 @@
                 <% end %>
             </table>
             <span class='pay_way'>支払方法</span>
-            <% if @order.pay_way == 'credit_card' %>
-                クレジットカード
-            <% else %>
-                銀行振込
-            <% end %>
+            <%= @order.pay_way_i18n %>
             <br />
 
             <span class='pay_way'>お届け先</span>
-            〒<%= @order.ship_code %><%= @order.ship_address %><%= @order.ship_address %><br /><%= @order.ship_name %>
-            </div>
+            〒<%= @order.ship_code %><%= @order.ship_address %><br /><%= @order.ship_name %>
+
+            <br /><br />
+
+            <%= form_with model:@order_save,url:orders_path do |f| %>
+                <%= f.hidden_field :pay_way,value:@order.pay_way %>
+                <%= f.hidden_field :ship_code,value:@order.ship_code %>
+                <%= f.hidden_field :ship_address,value:@order.ship_address %>
+                <%= f.hidden_field :ship_name,value:@order.ship_name %>
+                <%= f.submit '注文を確定する',class:'btn btn-success' %> 
+            <% end %>
+            
+        </div>
+
         <div class='col-md-4'>
             <br /><br />
             <table class='table table-bordered'>

@@ -11,6 +11,7 @@ class EndUser::OrdersController < ApplicationController
 
   def confirm
     @orders = current_end_user.cart_items
+    @order_save = Order.new
     @order = Order.new(order_params)
     if params[:order][:select_address] == "0"
       @order.ship_code = current_end_user.postcode
@@ -20,7 +21,7 @@ class EndUser::OrdersController < ApplicationController
       @address = Address.find(params[:order][:address_id])
       @order.ship_code = @address.postcode
       @order.ship_address = @address.address
-      @order.ship_name = @address.first_name + @address.last_name
+      @order.ship_name = @address.name
     else
       @order.ship_code = params[:order][:ship_code]
       @order.ship_address = params[:order][:ship_address]
@@ -32,9 +33,22 @@ class EndUser::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.save
-    redirect_to orders_complete_path
+    byebug
+    @order_save = Order.new(order_params)
+    if @order_save.save 
+      cart_items = current_end_user.cart_items
+      cart_items.each do |cart_item|  
+        order_detail = OrderDetail.new
+        order_detail.item_id = cart_item.item_id
+        order_detail.amount = cart_item.amount
+        order_detail.price = cart_item.item.price * cart_item.amount
+        redirect_to orders_complete_path
+      end
+    else 
+      @order = Order.new(order_params)
+      @orders = current_end_user.cart_items
+      render :confirm
+    end
   end
 
   private
