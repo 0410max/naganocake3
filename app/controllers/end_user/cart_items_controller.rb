@@ -6,7 +6,7 @@ class EndUser::CartItemsController < ApplicationController
     def destroy
         @cart_item = CartItem.find(params[:id])
         @cart_item.destroy
-        redirect_to end_user_cart_items_path
+        redirect_to cart_items_path
     end
     
     def create
@@ -15,10 +15,10 @@ class EndUser::CartItemsController < ApplicationController
         @cart_item_params = current_end_user.cart_items.find_by(item_id: params[:cart_item][:item_id])
         if @cart_item_params.present?
             @cart_item_params.update(amount: @cart_item.amount.to_i + @cart_item_params.amount.to_i)
-            redirect_to end_user_cart_items_path
+            redirect_to cart_items_path
         else
             @cart_item.save
-            redirect_to end_user_cart_items_path
+            redirect_to cart_items_path
         end
     end
 

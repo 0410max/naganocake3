@@ -41,7 +41,7 @@
             <%= link_to '会員一覧',admin_customers_path %>
           </li>
           <li class='not-login-item-index'>
-            <a href="#">注文履歴一覧</a>
+            <%= link_to '注文履歴一覧',admin_orders_path %>
           </li>
           <li class='not-login-item-index'>
             <%= link_to 'ジャンル一覧',admin_genres_path %>
@@ -66,7 +66,7 @@
             <%= link_to 'LOGO',root_path %>
           </li>
           <li class='not-login-item-index'>
-            <%= link_to '商品一覧',end_user_items_path %>
+            <%= link_to '商品一覧',items_path %>
           </li>
           <li class='not-login-login'>
             <%= link_to 'ログイン',new_end_user_session_path %>

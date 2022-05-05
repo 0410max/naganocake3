@@ -11,7 +11,7 @@ class EndUser::AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address.end_user_id = current_end_user.id
     if @address.save
-      redirect_to end_user_addresses_path
+      redirect_to addresses_path
     else 
       @addresses = current_end_user.addresses
       render :index
@@ -25,7 +25,7 @@ class EndUser::AddressesController < ApplicationController
   def update
     @address = Address.find(params[:id])
     if @address.update(address_params)
-      redirect_to end_user_addresses_path
+      redirect_to addresses_path
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class EndUser::AddressesController < ApplicationController
   def destroy
     @address = Address.find(params[:id])
     @address.destroy
-    redirect_to end_user_addresses_path
+    redirect_to addresses_path
   end
 
   private

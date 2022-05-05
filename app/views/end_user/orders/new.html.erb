@@ -18,7 +18,7 @@
                 <span class='order-new'>〒<%= current_end_user.postcode %><%= current_end_user.address %><%= current_end_user.first_name %><%= current_end_user.last_name %></span><br />
 
                 <%= f.radio_button :select_address,1 %>登録済み住所から選択<br />
-                <span class='order-new'><%= f.select :address_id, options_from_collection_for_select(current_end_user.addresses, :id, :address_display) %></span><br />
+                <span class='order-new'><%= f.collection_select :address_id, current_end_user.addresses, :id, :address_display, prompt:"選択してください" %></span><br />
 
                 <%= f.radio_button :select_address,2 %>新しいお届け先<br />
                 <span class='order-new'>郵便番号(ハイフンなし)<%= f.text_field :ship_code,placeholder:'0000000' %></span><br />

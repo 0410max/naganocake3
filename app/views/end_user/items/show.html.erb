@@ -16,7 +16,7 @@
             <span class='item-introduction'><%= @item.introduction %></span><br /><br /><br /><br />
             ¥<%= tax_money_int %><br /><br />
 
-            <%= form_with model:@cart_item,url:end_user_cart_items_path,method: :post do |f| %>
+            <%= form_with model:@cart_item,url:cart_items_path,method: :post do |f| %>
                 <%= f.select :amount, *[1..10],{include_blank:'個数選択'} %>
                 <%= f.hidden_field :item_id ,:value => @item.id %>
                 <%= f.submit 'カートに入れる' %>

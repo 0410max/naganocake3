@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+
+  devise_for :end_users,skip: [:passwords], controllers: {
+    registrations: "end_user/registrations",
+    sessions: 'end_user/sessions'
+  }
+
+  devise_for :admin, skip: [:registrations, :passwords] , controllers: {
+    sessions: "admin/sessions"
+  }
+  
   namespace :admin do
     get 'homes/top'
     resources :customers,only:[:index,:show,:edit,:update]
@@ -6,15 +16,9 @@ Rails.application.routes.draw do
     resources :items,only:[:index,:new,:edit,:create,:update,:show] do 
       get :search, on: :collection
     end
+    resources :orders,only:[:index,:show,:update]
   end
 
-  devise_for :end_users,skip: [:passwords], controllers: {
-    registrations: "end_user/registrations",
-    sessions: 'end_user/sessions'
-  }
-  devise_for :admin, skip: [:registrations, :passwords] , controllers: {
-    sessions: "admin/sessions"
-  }
   scope module: :end_user do
     root 'homes#top'
     get 'items' => 'items#index'
@@ -29,6 +33,7 @@ Rails.application.routes.draw do
     resources :addresses,only:[:index,:edit,:create,:update,:destroy]
     get 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
-    resources :orders,only:[:new,:index,:show,:create]
+    resources :orders,only:[:new,:create]
   end
+
 end

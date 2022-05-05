@@ -19,7 +19,7 @@
                 <br />
                 <div>
                     ジャンル
-                    <%= f.select :genre_id, options_from_collection_for_select(@genres, :id, :name) %>
+                    <%= f.collection_select :genre_id, @genres, :id, :name, prompt: "選択してください" %>
                 </div>
                 <br />
                 <div>

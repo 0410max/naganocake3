@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 2022_05_01_081115) do
     t.integer "item_id"
     t.integer "amount"
     t.integer "price"
-    t.integer "making_status"
+    t.integer "making_status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -124,12 +124,11 @@ ActiveRecord::Schema.define(version: 2022_05_01_081115) do
     t.string "ship_address"
     t.string "ship_name"
     t.integer "pay_way"
-    t.integer "status"
+    t.integer "status", default: 0
     t.integer "total_money"
     t.integer "send_cost"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "address_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
