@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get :search, on: :collection
     end
     resources :orders,only:[:index,:show,:update]
+    resources :order_details,only:[:update]
   end
 
   scope module: :end_user do

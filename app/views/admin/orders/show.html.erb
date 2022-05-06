@@ -57,12 +57,15 @@
                             <td><%= order_detail.amount %></td>
                             <td><%= (order_detail.price * order_detail.amount).to_s(:delimited) %></td>
                             <td>
-                                <%= form_with model:order_detail,url:admin_order_path do |f| %>
-                                    <%= f.select :status,OrderDetail.making_statuses_i18n.invert %>
+                                <%= form_with model:order_detail,url:admin_order_detail_path do |f| %>
+                                    <%= f.select :making_status,OrderDetail.making_statuses_i18n.invert %>
                                     <%= f.submit '更新',class:'btn btn-success' %>
                                 <% end %>
                             </td>
                         </tr>
+
+                        
+                        
                     <% end %>
                 </tbody>
             </table>
